@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/accountbook?serverTimezone=UTC&characterEncoding=UTF-8
+    username: admin
+    password: administrator
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  sql:
+    init:
+      mode: always
+  config:
+    activate:
+      on-profile: default
+jwt:
+  secret-key: SECRET-KEY-2022101822190ACCOUNTBOOK-RAND029384857595093
+  expired-duration: 30
+
+---
+
+spring:
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    driver-class-name: org.h2.Driver
+    hikari:
+      jdbc-url: jdbc:h2:mem:test
+    password:
+    username: test
+  config:
+    activate:
+      on-profile: test
+jwt:
+  secret-key: SECRET-KEY-2022101822190ACCOUNTBOOK-RAND029384857595093
+  expired-duration: 30
