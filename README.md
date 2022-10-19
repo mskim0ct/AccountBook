@@ -71,10 +71,10 @@
     - 사용자
         - 회원가입 구현 및 테스트 코드
         - 로그인 (토큰발행)
+        - 로그아웃
 
 
 - 구현 못한 기능
-    - 로그아웃 기능
     - 토큰 인증 문제 시 발생하는 Exception 통일
     - 로그인/로그아웃에 대한 Controller 테스트 코드
 
@@ -233,7 +233,7 @@ POST /sign-up
 ```
 
 #### 로그인
-GET /sign-in
+POST /sign-in
 
 ```
 {
@@ -249,6 +249,21 @@ GET /sign-in
   "message": {
     "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiZXhwIjoxNjY2MTE5MzM5fQ.8DwW1kluLE3TQgjCL_7bbZhKphP2b7oJPhPaYhExPOI"
   },
+  "error": null
+}
+```
+
+#### 로그아웃
+POST http://localhost:8080/logout   
+Content-Type: application/json   
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiZXhwIjoxNjY2MTkyNjY0fQ.pXlXyaXK-sCBb8rEXAC7snQgIKISp6kxkpxxahDRF0o
+```
+{}
+```
+```
+{
+  "success": true,
+  "message": null,
   "error": null
 }
 ```

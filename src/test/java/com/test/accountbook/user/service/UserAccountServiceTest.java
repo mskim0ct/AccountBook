@@ -105,19 +105,4 @@ class UserAccountServiceTest {
         assertEquals(ErrorCode.SIGNIN_FAILED, accountBookAuthenticationException.getErrorCode());
     }
 
-    @DisplayName("[로그아웃] 성공")
-    @Test
-    void logout() {
-        //given
-        var email = "test@test.com";
-        var password = "test";
-        var expiredDuration = 30;
-        User user = userRepository.save(new User(email, passwordEncoder.encode(password)));
-        user.signIn(expiredDuration);
-        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), List.of(new SimpleGrantedAuthority(user.getAuthority()))));
-        //when
-        userAccountService.logout();
-        //then
-        assertNull(userRepository.findByEmail(email).get().getSignInExpiredAt());
-    }
 }

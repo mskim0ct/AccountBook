@@ -54,13 +54,4 @@ public class UserAccountService {
         return new SignInResponse(jwtUtils.createJwt(user.getEmail(), user.getSignInExpiredAt(), jwtProperty.getSecretKey()));
     }
 
-    @Transactional
-    public void logout() {
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new AccountBookAuthenticationException(ErrorCode.LOGOUT_FAILED,
-                        ErrorCode.LOGOUT_FAILED.getMessage()));
-        user.logout();
-    }
-
 }
